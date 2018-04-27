@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="org.cheng.utils.MyMapper"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/spring_boot_test"
+                        userId="root"
+                        password="zy159357"/>
+
+        <!-- 对于生成的 pojo 所在包 -->
+        <javaModelGenerator targetPackage="org.cheng.pojo" targetProject="src/main/java"/>
+
+        <!-- 对于生成的 mapper 所在目录 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!-- 配置 mapper 对应的 java 映射 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.cheng.mapper" targetProject="src/main/java"/>
+
+        <!-- 需要逆向生成的表名 -->
+        <table tableName="sys_user"/>
+    </context>
+</generatorConfiguration>
